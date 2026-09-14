@@ -1,0 +1,14 @@
+<view class="login-page">
+  <view class="brand"><view class="brand-mark">全</view><view><view class="brand-name">全球站</view><view class="brand-caption">工单报工小程序</view></view></view>
+  <view class="intro"><view class="eyebrow">让现场作业清晰可查</view><view class="title">欢迎使用<view>工单报工</view></view><view class="description">扫码找到商品，记录本次作业。<view>报工明细与人员产量，一处查看。</view></view></view>
+  <view class="login-card"><view class="card-heading">选择演示身份</view><view class="card-caption">进入后，默认以该员工记录实际处理人</view>
+    <view class="identity {{selected === item.id ? 'selected' : ''}}" wx:for="{{employees}}" wx:key="id" data-id="{{item.id}}" bindtap="select">
+      <view class="avatar">{{index === 0 ? 'A' : 'B'}}</view><view class="identity-info"><view class="identity-name">{{item.name}}</view><view class="identity-code">工号 {{item.code}}</view></view><view class="radio"><view wx:if="{{selected === item.id}}" class="radio-dot"></view></view>
+    </view>
+    <view wx:if="{{error}}" class="error">{{error}}</view>
+    <button class="login-button" loading="{{loading}}" disabled="{{loading}}" bindtap="login">{{loading ? '正在进入' : '以演示身份进入'}}</button>
+    <view class="help" bindtap="help">如何使用正式员工账号？</view>
+  </view>
+  <view class="demo-note"><view class="note-title">当前为演示环境</view><view>仅使用虚拟身份，报工数据保存在当前设备。<view>不验证真实员工身份，不计入正式产量。</view></view></view>
+  <view class="footer">全球站 · 仓内作业协同</view>
+</view>
